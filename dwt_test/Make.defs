@@ -1,0 +1,4 @@
+
+ifeq ($(CONFIG_WAVELIB_DWT_TEST),y)
+CONFIGURED_APPS += dwt_test
+endif

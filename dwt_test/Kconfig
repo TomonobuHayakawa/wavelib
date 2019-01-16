@@ -1,0 +1,28 @@
+
+config WAVELIB_DWT_TEST
+	bool "dwt_test app"
+	default n
+	---help---
+		Enable the dwt_test app.
+		This application is test of wavelib DWT.
+
+
+if WAVELIB_DWT_TEST
+
+config WAVELIB_DWT_TEST_PROGNAME
+	string "Program name"
+	default "dwt_test"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config WAVELIB_DWT_TEST_PRIORITY
+	int "dwt_test task priority"
+	default 100
+
+config WAVELIB_DWT_TEST_STACKSIZE
+	int "dwt_test stack size"
+	default 2048
+
+endif
