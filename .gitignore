@@ -32,3 +32,8 @@ language.settings.xml
 
 #wavelib-specific
 denoised.txt
+
+.depend
+
+/Kconfig
+

@@ -26,3 +26,4 @@ config WAVELIB_DWT_TEST_STACKSIZE
 	default 2048
 
 endif
+
