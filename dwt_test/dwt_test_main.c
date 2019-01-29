@@ -43,6 +43,8 @@
 #include <math.h>
 #include "wavelib.h"
 
+// If you want to read target signals from a file, comment out below line.
+#define TEST_SIGNAL_HEADER
 
 /****************************************************************************
  * Public Functions
@@ -66,8 +68,13 @@ double absmax(double *array, int N) {
 	return max;
 }
 
+
+#ifdef TEST_SIGNAL_HEADER
+#include "test_signal.h"
+#else
 double temp[1200];
 char line_buf[1024];
+#endif
 
 #ifdef CONFIG_BUILD_KERNEL
 int main(int argc, FAR char *argv[])
@@ -85,6 +92,7 @@ int dwt_test_main(int argc, char *argv[])
 	char *name = "db4";
 	obj = wave_init(name);// Initialize the wavelet
 
+#ifndef TEST_SIGNAL_HEADER
 	ifp = fopen("/mnt/sd0/signal.txt", "r");
 	i = 0;
 	if (!ifp) {
@@ -97,6 +105,7 @@ int dwt_test_main(int argc, char *argv[])
 		sscanf(line_buf, "%lf \n", &temp[i]);
 		i++;
 	}
+#endif
 	N = 256;
 
 	inp = (double*)malloc(sizeof(double)* N);
